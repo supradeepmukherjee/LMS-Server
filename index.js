@@ -7,6 +7,7 @@ import expressMongoSanitize from "express-mongo-sanitize";
 import hpp from "hpp";
 import cookieParser from "cookie-parser";
 import cors from 'cors'
+import health from './routes/health.js'
 
 config()
 
@@ -49,6 +50,8 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'device-remember-token', 'Access-Control-Allow-Origin', 'Origin', 'Accept']
 }))
+
+app.use('/health', health)
 
 app.use((req, res) => res.status(404).json({
     status: 'error',

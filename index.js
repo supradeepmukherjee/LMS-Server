@@ -8,6 +8,7 @@ import hpp from "hpp";
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 import health from './routes/health.js'
+import user from './routes/user.js'
 
 config()
 
@@ -52,6 +53,7 @@ app.use(cors({
 }))
 
 app.use('/health', health)
+app.use('/api/user', user)
 
 app.use((req, res) => res.status(404).json({
     status: 'error',
